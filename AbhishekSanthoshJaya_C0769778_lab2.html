@@ -1,0 +1,67 @@
+<html>
+	<font size="8" color="green">Final test lab</font><br><br>
+	Number of rows: <input type="text" id="t1" /><br><br>
+	Number of cols: <input type="text" id="t2" /><br><br>
+	
+	<button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+	
+	<button id="b2" onclick="addColumn()">Add Column</button>
+	
+	<button id="b3" onclick="addRow()">Add Row</button>
+		
+	<script language="javascript">
+		
+function generateTable() {
+    //Your code goes here
+
+    // Get rows and columns from user
+    var rows = document.getElementById("t1").value;
+    var cols = document.getElementById("t2").value;
+
+    //Other element ids
+    var btn1 = document.getElementById("b1");
+    var bt2n = document.getElementById("b2");
+    var bt2n = document.getElementById("b3");
+
+    // Table creation begins here
+    var body = document.body;
+    var table = document.createElement('table');
+    var tableBody = document.createElement('tbody');
+    table.appendChild(tableBody);
+    
+    //Hiding unwanted elements
+    btn1.style.display = "none";
+    t1.style.display = "none";
+    t2.style.display = "none";
+
+    // Table Styling
+    table.style.borderColor = "green";
+    table.border = "solid 3px"
+    table.style.borderCollapse = "collapse"
+    table.style.marginTop = "2em"
+
+    // Dynamically creating rows and columns
+    for (var i=0; i<rows; i++){
+        var tr = document.createElement('tr');
+        tableBody.appendChild(tr);
+        
+        for (var j=0; j<cols; j++){
+            var td = document.createElement('td');
+            td.width='150';
+            td.style.fontSize = "1.25em";
+            td.style.textAlign = "center";
+            td.style.padding = "1em";
+            td.appendChild(document.createTextNode("Cell[" + i + "," + j + "]"));
+            tr.appendChild(td);
+        }
+    }
+    body.appendChild(table);
+}
+
+function addRow()
+    {
+       
+    }
+
+	</script>
+</html>
