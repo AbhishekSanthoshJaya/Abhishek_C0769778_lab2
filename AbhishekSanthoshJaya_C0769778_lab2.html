@@ -20,19 +20,21 @@ function generateTable() {
 
     //Other element ids
     var btn1 = document.getElementById("b1");
-    var bt2n = document.getElementById("b2");
-    var bt2n = document.getElementById("b3");
+    var btn2 = document.getElementById("b2");
+    var btn3 = document.getElementById("b3");
+
+    //Button Styling
+    btn2.style.marginTop = "3em";
+    btn3.style.marginTop = "3em";
+    btn2.style.padding = "0.5em";
+    btn3.style.padding = "0.5em";
 
     // Table creation begins here
-    var body = document.body;
-    var table = document.createElement('table');
-    var tableBody = document.createElement('tbody');
-    table.appendChild(tableBody);
+    var body = document.getElementsByTagName("body")[0];
+    var table = document.createElement("table");
     
     //Hiding unwanted elements
-    btn1.style.display = "none";
-    t1.style.display = "none";
-    t2.style.display = "none";
+    document.getElementsByTagName("body")[0].innerHTML = "";
 
     // Table Styling
     table.style.borderColor = "green";
@@ -43,7 +45,7 @@ function generateTable() {
     // Dynamically creating rows and columns
     for (var i=0; i<rows; i++){
         var tr = document.createElement('tr');
-        tableBody.appendChild(tr);
+        table.appendChild(tr);
         
         for (var j=0; j<cols; j++){
             var td = document.createElement('td');
@@ -55,12 +57,48 @@ function generateTable() {
             tr.appendChild(td);
         }
     }
+    body.appendChild(btn2);
+    body.appendChild(btn3);
     body.appendChild(table);
 }
 
 function addRow()
     {
-       
+        var table=document.getElementsByTagName('table')[0];
+        var rows = table.rows;
+        var rowNumber = table.childNodes.length;
+        var colNumber = rows[0].childNodes.length;
+        
+        var row = table.insertRow(-1);
+
+        for (var i=0; i<colNumber; i++)
+        {
+            var newRow = row.insertCell(i);
+            newRow.innerHTML="Cell[" + rowNumber + "," + i + "]";
+            newRow.style.fontSize = "1.25em";
+            newRow.style.textAlign = "center";
+            newRow.style.padding = "1em";
+        }
+    }
+
+    function addColumn()
+    {
+
+        var table=document.getElementsByTagName('table')[0];
+        var rows = table.rows;
+        var rowNumber = table.childNodes.length;
+        var colNumber = rows[0].childNodes.length;
+        
+        // var row = table.insertRow(-1);
+
+        for (var i=0; i<rows.length; i++)
+        {
+            var newRow = rows[i].insertCell(-1);
+            newRow.innerHTML="Cell[" + i + "," + colNumber + "]";
+            newRow.style.fontSize = "1.25em";
+            newRow.style.textAlign = "center";
+            newRow.style.padding = "1em";
+        }
     }
 
 	</script>
