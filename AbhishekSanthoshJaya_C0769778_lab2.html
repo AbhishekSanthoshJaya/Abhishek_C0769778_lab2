@@ -11,8 +11,30 @@
 		
 	<script language="javascript">
 		
+function inputChecker() {
+
+    var rows = document.getElementById("t1").value;
+    var cols = document.getElementById("t2").value;
+
+    if(rows == "" || cols == "") 
+    {
+        alert("Please enter a valid input");
+        reload();
+    }
+
+    if(rows == 0 || cols == 0)
+    {
+        alert("Please enter non-zero inputs");
+        reload();
+    }
+
+}
+
 function generateTable() {
     //Your code goes here
+
+    //Checking for valid inputs
+    inputChecker();
 
     // Get rows and columns from user
     var rows = document.getElementById("t1").value;
@@ -49,7 +71,7 @@ function generateTable() {
         
         for (var j=0; j<cols; j++){
             var td = document.createElement('td');
-            td.width='150';
+            td.width='120';
             td.style.fontSize = "1.25em";
             td.style.textAlign = "center";
             td.style.padding = "1em";
@@ -70,11 +92,12 @@ function addRow()
         var colNumber = rows[0].childNodes.length;
         
         var row = table.insertRow(-1);
-
+        
         for (var i=0; i<colNumber; i++)
         {
             var newRow = row.insertCell(i);
             newRow.innerHTML="Cell[" + rowNumber + "," + i + "]";
+            newRow.width='120';
             newRow.style.fontSize = "1.25em";
             newRow.style.textAlign = "center";
             newRow.style.padding = "1em";
@@ -93,13 +116,13 @@ function addRow()
 
         for (var i=0; i<rows.length; i++)
         {
-            var newRow = rows[i].insertCell(-1);
-            newRow.innerHTML="Cell[" + i + "," + colNumber + "]";
-            newRow.style.fontSize = "1.25em";
-            newRow.style.textAlign = "center";
-            newRow.style.padding = "1em";
+            var newCol = rows[i].insertCell(-1);
+            newCol.innerHTML="Cell[" + i + "," + colNumber + "]";
+            newCol.width='120';
+            newCol.style.fontSize = "1.25em";
+            newCol.style.textAlign = "center";
+            newCol.style.padding = "1em";
         }
     }
-
 	</script>
 </html>
